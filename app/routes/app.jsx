@@ -13,7 +13,6 @@ export const loader = async ({ request }) => {
   return { apiKey: process.env.SHOPIFY_API_KEY || "" };
 };
 
-console.log('Initial commit');
 
 
 export default function App() {
