@@ -11,7 +11,6 @@ import {
 import { TitleBar } from "@shopify/app-bridge-react";
 
 export default function Settings() {
-  console.log('Initial commit');
   
   return (
     <Page>
