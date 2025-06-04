@@ -37,9 +37,6 @@ export default function Settings() {
   const settings = useLoaderData();
   const [formState, setFormState] = useState(settings.data);
 
-
-  
-
   return (
     <Page>
       <TitleBar title="Settings" />
