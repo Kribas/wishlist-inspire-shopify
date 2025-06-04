@@ -17,12 +17,14 @@ import { TitleBar } from "@shopify/app-bridge-react";
 import { useState } from "react";
 import {useLoaderData, Form } from "@remix-run/react";
 import {data} from '@remix-run/node'
+
+//Import prisma db
+import db from '../db.server'
+
+
 export async function loader() {
   //Get data from database
-  let settings = {
-    name: "My app",
-    description: "My app description",
-  };
+  let settings = await db.settings.findFirst()
   return data(settings);
 }
 
@@ -34,6 +36,7 @@ export async function action({request}) {
 export default function Settings() {
   const settings = useLoaderData();
   const [formState, setFormState] = useState(settings.data);
+
 
   
 

@@ -10,7 +10,7 @@ import {
 } from "@shopify/polaris";
 import { TitleBar } from "@shopify/app-bridge-react";
 
-export default function Settings() {
+export default function Pricing() {
   
   return (
     <Page>
