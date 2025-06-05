@@ -53,6 +53,9 @@ export default function Settings() {
   const settings = useLoaderData();
   const [formState, setFormState] = useState(settings.data);
 
+  console.log('Initial commit');
+  
+
   return (
     <Page>
       <TitleBar title="Settings" />
