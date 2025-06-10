@@ -12,7 +12,7 @@ export async function action({ request }) {
   switch (method) {
     case "POST":
       return data({ message: "Success", method: "POST" });
-    case "POST":
+    case "PATCH":
       return data({ message: "Success", method: "PATCH" });
 
     default:
