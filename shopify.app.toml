@@ -3,7 +3,7 @@
 client_id = "47c305add1822f76a5ab81c6117d0f79"
 name = "wishlist-inspire"
 handle = "wishlist-inspire-384"
-application_url = "https://performed-invalid-corporation-facilities.trycloudflare.com"
+application_url = "https://cons-employee-firewire-postcards.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://performed-invalid-corporation-facilities.trycloudflare.com/auth/callback",
-  "https://performed-invalid-corporation-facilities.trycloudflare.com/auth/shopify/callback",
-  "https://performed-invalid-corporation-facilities.trycloudflare.com/api/auth/callback"
+  "https://cons-employee-firewire-postcards.trycloudflare.com/auth/callback",
+  "https://cons-employee-firewire-postcards.trycloudflare.com/auth/shopify/callback",
+  "https://cons-employee-firewire-postcards.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
