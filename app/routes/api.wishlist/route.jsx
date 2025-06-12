@@ -1,4 +1,5 @@
 import { data } from "@remix-run/node";
+import { withCors } from "../../cors";
 
 export async function loader() {
   return data({
@@ -35,7 +36,7 @@ export async function action({ request }) {
         }
       })
       const response = data({message: 'Product added to wishlist', method: 'POST', wishlist: wishlist})
-      // return cors(request, response)
+      return withCors(response)
     case "PATCH":
       return data({ message: "Success", method: "PATCH" });
 
