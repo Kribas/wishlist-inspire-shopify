@@ -1,5 +1,6 @@
-import { data } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { withCors } from "../../cors";
+import {db} from '../../db.server'
 
 export async function loader() {
   return data({
@@ -20,7 +21,7 @@ export async function action({ request }) {
   const shop = data.shop
 
   if(!customerId || !productId || !shop) {
-    return data({
+    return json({
       message: 'Missing data. Required data: customerId, productId and shop',
       method: method
     })
@@ -28,17 +29,17 @@ export async function action({ request }) {
 
   switch (method) {
     case "POST":
-      const wishlist = await db.wishlist.create({
+      const wishlist = await db?.wishlist.create({
         data: {
           customerId,
           productId,
           shop
         }
       })
-      const response = data({message: 'Product added to wishlist', method: 'POST', wishlist: wishlist})
+      const response = json({message: 'Product added to wishlist', method: 'POST', wishlist: wishlist})
       return withCors(response)
     case "PATCH":
-      return data({ message: "Success", method: "PATCH" });
+      return json({ message: "Success", method: "PATCH" });
 
     default:
       return new Response({ message: "Method not allowed" }, { status: 405 });
