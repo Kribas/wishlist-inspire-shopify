@@ -1,47 +1,65 @@
 import { json } from "@remix-run/node";
-import { withCors } from "../../cors";
-import {db} from '../../db.server'
+import db from "../../db.server";
+import  withCors from '../../cors';
 
-export async function loader() {
-  return data({
-    ok: true,
-    message: "Hello from the API",
+
+// get request: accept request with request: customerId, shop, productId.
+// read database and return wishlist items for that customer.
+export async function loader({ request }) {
+  const response = json({
+    message: 'Hello from api'
   });
+
+  return withCors(response);
+
 }
 
-export async function action({ request }) {
-  const method = request.method;
-  const formData = await request.formData()
-  const data = Object.fromEntries(formData)
-  
-  console.log('DATA-------', data)
 
-  const productId = data.productId
-  const customerId = data.customerId
-  const shop = data.shop
+// Expexted data comes from post request. If
+// customerID, productID, shop
+export async function action({ request }) {
+
+  let data = await request.formData();
+  data = Object.fromEntries(data);
+  const customerId = data.customerId;
+  const productId = data.productId;
+  const shop = data.shop;
+  // const _action = data._action;
 
   if(!customerId || !productId || !shop) {
     return json({
-      message: 'Missing data. Required data: customerId, productId and shop',
-      method: method
-    })
+      message: "Missing data. Required data: customerId, productId, shop",
+      // method: _action
+    });
   }
 
-  switch (method) {
+  let response;
+
+  switch (request.method) {
     case "POST":
-      const wishlist = await db?.wishlist.create({
+      // Handle POST request logic here
+      // For example, adding a new item to the wishlist
+      const wishlist = await db.wishlist.create({
         data: {
           customerId,
           productId,
-          shop
-        }
-      })
-      const response = json({message: 'Product added to wishlist', method: 'POST', wishlist: wishlist})
-      return withCors(response)
-    case "PATCH":
-      return json({ message: "Success", method: "PATCH" });
+          shop,
+        },
+      });
 
+      response = json({ message: "Product added to wishlist", method: "POST", wishlisted: true, wishlist: wishlist });
+      return withCors(response);
+
+    case "PATCH":
+      return withCors({message: "PATCH request"})
+    case "DELETE":
+     
+
+      response = json({ message: "Product removed from your wishlist"});
+      return withCors(response)
     default:
-      return new Response({ message: "Method not allowed" }, { status: 405 });
+      // Optional: handle other methods or return a method not allowed response
+      return new Response("Method Not Allowed", { status: 405 });
   }
+
 }
