@@ -1,4 +1,4 @@
-export function withCors(response) {
+export default function withCors(response) {
   response.headers.set("Access-Control-Allow-Origin", "*");
   response.headers.set(
     "Access-Control-Allow-Methods",

@@ -18,7 +18,6 @@ export async function loader({ request }) {
 // Expexted data comes from post request. If
 // customerID, productID, shop
 export async function action({ request }) {
-
   let data = await request.formData();
   data = Object.fromEntries(data);
   const customerId = data.customerId;
