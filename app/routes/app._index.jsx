@@ -227,26 +227,26 @@ export default function Index() {
                   <BlockStack gap="200">
                     <InlineStack align="space-between">
                       <Text as="span" variant="bodyMd">
-                        Framework
+                        Course Content
                       </Text>
                       <Link
                         url="https://remix.run"
                         target="_blank"
                         removeUnderline
                       >
-                        Remix
+                        Codeinspire
                       </Link>
                     </InlineStack>
                     <InlineStack align="space-between">
                       <Text as="span" variant="bodyMd">
-                        Database
+                        Source code
                       </Text>
                       <Link
                         url="https://www.prisma.io/"
                         target="_blank"
                         removeUnderline
                       >
-                        Prisma
+                        Github
                       </Link>
                     </InlineStack>
                     <InlineStack align="space-between">

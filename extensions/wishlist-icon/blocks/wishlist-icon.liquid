@@ -24,7 +24,6 @@
       appUrl: "https://seeing-refurbished-converter-crash.trycloudflare.com/",
 
       addToWishList() {
-        this.wishlisted = !this.wishlisted
 
         //TODO: send data to database save wishlist
 
@@ -47,7 +46,9 @@
 
         fetch(this.appUrl + "api/wishlist", requestOptions)
         .then((response) => response.text())
-        .then(result => console.log(result))
+        .then(result => {
+          this.wishlisted = !this.wishlisted
+        })
         .catch(error => console.log(error))
       }
     }))
