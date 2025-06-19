@@ -20,8 +20,19 @@
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('wishlist', () => ({
+      init() {
+        fetch(`${this.appUrl}api/wishlist?customerId={{ customer.id }}&productId={{ product.id }}&shop={{ shop.permanent_domain }}`)
+        .then((response) => response.json)
+        .then((result) => {
+          if(result.data.length > 0) {
+            this.wishlisted = true
+          }
+        })
+        .catch((error) => console.log(error))
+      }
+
       wishlisted: false,
-      appUrl: "https://eds-anna-ignored-additional.trycloudflare.com/",
+      appUrl: "https://rss-compact-qualities-chris.trycloudflare.com/",
 
       addToWishList() {
 
@@ -37,6 +48,12 @@
         formData.append('customerId', "{{ customer.id }}")
         formData.append('productId', "{{ product.id }}")
         formData.append("shop", "{{ shop.permanent_domain }}")
+        formData.append("_action", "CREATE")
+
+        if(this.wishlisted) {
+          this.wishlisted = false
+          formData.set("_action", "DELETE")
+        }
 
         var requestOptions = {
           method: "POST",
