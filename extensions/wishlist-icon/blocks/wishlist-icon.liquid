@@ -1,5 +1,5 @@
 <div class="wishlist-inspire__icon" x-data="wishlist">
-  <button type="button" @click="addToWishList()">
+  <button type="button" @click.debounce="addToWishList()">
     <svg
       class="wishlist-inspire__icon--svg"
       viewBox="0 0 24 24"
