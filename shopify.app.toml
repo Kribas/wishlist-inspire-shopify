@@ -3,7 +3,7 @@
 client_id = "47c305add1822f76a5ab81c6117d0f79"
 name = "wishlist-inspire"
 handle = "wishlist-inspire-384"
-application_url = "https://features-cambodia-billion-per.trycloudflare.com"
+application_url = "https://sharon-telephony-editing-soldiers.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://features-cambodia-billion-per.trycloudflare.com/auth/callback",
-  "https://features-cambodia-billion-per.trycloudflare.com/auth/shopify/callback",
-  "https://features-cambodia-billion-per.trycloudflare.com/api/auth/callback"
+  "https://sharon-telephony-editing-soldiers.trycloudflare.com/auth/callback",
+  "https://sharon-telephony-editing-soldiers.trycloudflare.com/auth/shopify/callback",
+  "https://sharon-telephony-editing-soldiers.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]

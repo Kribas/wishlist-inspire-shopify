@@ -18,6 +18,10 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 <script>
+  window.customerId = {{ customer.id |  default: 'null' }}
+</script>
+
+<script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('wishlist', () => ({
       init() {
@@ -29,21 +33,20 @@
           }
         })
         .catch((error) => console.log(error))
-      }
+      },
 
       wishlisted: false,
-      appUrl: "https://features-cambodia-billion-per.trycloudflare.com/",
+      appUrl: "https://sharon-telephony-editing-soldiers.trycloudflare.com/",
 
 
       addToWishList() {
 
         //TODO: send data to database save wishlist
 
-        {% unless customer %}
-          //if customer is not logged in show an alert
-            alert('Please login to add to wishlist')
-            return
-        {% endunless %}
+        if(!window.customerId || window.customerId == 'null') {
+          alert('Please login to add to wishlist')
+        }
+
 
         var formData = new FormData()
         formData.append('customerId', "{{ customer.id }}")
