@@ -3,7 +3,7 @@
 client_id = "47c305add1822f76a5ab81c6117d0f79"
 name = "wishlist-inspire"
 handle = "wishlist-inspire-384"
-application_url = "https://sharon-telephony-editing-soldiers.trycloudflare.com"
+application_url = "https://sought-fire-brooklyn-stewart.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://sharon-telephony-editing-soldiers.trycloudflare.com/auth/callback",
-  "https://sharon-telephony-editing-soldiers.trycloudflare.com/auth/shopify/callback",
-  "https://sharon-telephony-editing-soldiers.trycloudflare.com/api/auth/callback"
+  "https://sought-fire-brooklyn-stewart.trycloudflare.com/auth/callback",
+  "https://sought-fire-brooklyn-stewart.trycloudflare.com/auth/shopify/callback",
+  "https://sought-fire-brooklyn-stewart.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
