@@ -23,19 +23,19 @@ export async function action({ request }) {
   const customerId = data.customerId;
   const productId = data.productId;
   const shop = data.shop;
-  // const _action = data._action;
+  const _action = data._action;
 
   if(!customerId || !productId || !shop) {
     return json({
       message: "Missing data. Required data: customerId, productId, shop",
-      // method: _action
+      method: _action
     });
   }
 
   let response;
 
-  switch (request.method) {
-    case "POST":
+  switch (_action) {
+    case "CREATE":
       // Handle POST request logic here
       // For example, adding a new item to the wishlist
       const wishlist = await db.wishlist.create({
@@ -46,15 +46,21 @@ export async function action({ request }) {
         },
       });
 
-      response = json({ message: "Product added to wishlist", method: "POST", wishlisted: true, wishlist: wishlist });
+      response = json({ message: "Product added to wishlist", method: _action, wishlisted: true, wishlist: wishlist });
       return withCors(response);
 
     case "PATCH":
       return withCors({message: "PATCH request"})
     case "DELETE":
      
-
-      response = json({ message: "Product removed from your wishlist"});
+      await db.wishlist.deleteMany({
+        where: {
+          customerId: customerId,
+          shop: shop,
+          productId: productId
+        }
+      })
+      response = json({ message: "Product removed from your wishlist", method: _action, wishlisted: false});
       return withCors(response)
     default:
       // Optional: handle other methods or return a method not allowed response

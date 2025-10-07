@@ -28,7 +28,7 @@
         fetch(`${this.appUrl}api/wishlist?customerId={{ customer.id }}&productId={{ product.id }}&shop={{ shop.permanent_domain }}`)
         .then((response) => response.json)
         .then((result) => {
-          if(result.data.length > 0) {
+          if(result?.data?.length > 0) {
             this.wishlisted = true
           }
         })
@@ -36,7 +36,7 @@
       },
 
       wishlisted: false,
-      appUrl: "https://sharon-telephony-editing-soldiers.trycloudflare.com/",
+      appUrl: "https://candles-calendars-championships-away.trycloudflare.com/",
 
 
       addToWishList() {
@@ -54,11 +54,12 @@
         formData.append("shop", "{{ shop.permanent_domain }}")
         formData.append("_action", "CREATE")
 
+        
         if(this.wishlisted) {
           this.wishlisted = false
           formData.set("_action", "DELETE")
         }
-
+        
         var requestOptions = {
           method: "POST",
           body: formData,
@@ -66,9 +67,13 @@
         }
 
         fetch(this.appUrl + "api/wishlist", requestOptions)
-        .then((response) => response.text())
+        .then((response) => response.json())
         .then(result => {
-          this.wishlisted = !this.wishlisted
+          if(result.wishlisted) {
+            this.wishlisted = true
+          } else {
+            this.wishlisted = false
+          }
         })
         .catch(error => console.log(error))
       }
