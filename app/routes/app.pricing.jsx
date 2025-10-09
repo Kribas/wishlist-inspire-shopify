@@ -11,6 +11,7 @@ import {
   Divider,
   Grid,
   ExceptionList,
+  Button,
 } from "@shopify/polaris";
 import { CheckIcon } from "@shopify/polaris-icons";
 export default function Pricing() {
@@ -99,6 +100,12 @@ export default function Pricing() {
                   />
                 ))}
               </BlockStack>
+              <div style={{ margin: "0.5rem 0" }}>
+                <Divider />
+              </div>
+              <Button primary url={plan_item.url}>
+                {plan_item.action}
+              </Button>
             </Card>
           </Grid.Cell>
         ))}

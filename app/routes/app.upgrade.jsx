@@ -4,8 +4,12 @@ export const loader = async ({ request }) => {
   const { billing } = await authenticate.admin(request);
   await billing.require({
     plans: [MONTHLY_PLAN],
-    isTest: true,
-    onFailure: async () => billing.request({ plan: MONTHLY_PLAN }),
+    onFailure: async () =>
+      billing.request({
+        plan: MONTHLY_PLAN,
+        isTest: true,
+        returnUrl: `https://admin.shopify.com/store/codeinspire-app01dev/apps/wishlist-inspire-431/app/pricing`,
+      }),
   });
 
   // App logic
